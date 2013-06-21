@@ -204,10 +204,27 @@ http://www.slideshare.net/YoungAhKim/ss-11348360
 
 에이전트 구분, 미디어쿼리 사용, 클라이언트 스크립트 구현
 
+간편하게 반응형 웹디자인을 하기 위해 부트스트랩과 같은 CSS 프레임워크를 사용한다.
+
+http://twitter.github.io/bootstrap/scaffolding.html#responsive
+
+설계시 화면 사이즈에 따른 레이아웃이 필요하니 이에 맞는 디자인을 준비해야 한다.
+
 
 - 분리 설계
 
 서브도메인, 모바일 전용 라우팅
+
+http://m.homepage.com/
+
+또는 
+
+http://homepage.com/m/
+
+이런 식으로 구분한다.
+
+두 사이트 사이로 이동할 수 있는 방법을 제공하여 사용자가 즉시 해당 페이지로 이동할 수 있도록 준비한다.
+
 
 - 가이드
 
