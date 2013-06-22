@@ -9,27 +9,17 @@
 
 보통 480px (디바이스 Width: 물리적 해상도가 아닌 내부 해상도) 기준으로 폰/태블릿으로 구분한다.
 
-> 아이폰 3GS : 3.5", 320px (320px) x1.0
-
-> 아이폰 4(4S) : 3.5", 640px (320px) x2.0
-
-> 아이폰 5 : 4.0", 640px (320px) x2.0
-
-> 갤럭시 S : 4.0", 480px (480px) x1.0
-
-> 갤럭시 S2 : 4.3", 480px (320px) x1.5
-
-> 갤럭시 S3 : 4.8", 720px (360px) x2.0
-
-> 갤럭시 S4 : 5.0", 1080px (360px) x3.0
-
-> 갤럭시 노트 : 5.3", 800px (400px) x2.0
-
-> 갤럭시 노트 2 : 5.5", 720px (360px) x2.0
-
-> 갤럭시 넥서스 : 4.6", 720px (360px) x2.0
-
-> 넥서스 4 : 4.7", 768px (384px) x2.0
+	아이폰 3GS : 3.5", 320px (320px) x1.0
+	아이폰 4(4S) : 3.5", 640px (320px) x2.0
+	아이폰 5 : 4.0", 640px (320px) x2.0
+	갤럭시 S : 4.0", 480px (480px) x1.0
+	갤럭시 S2 : 4.3", 480px (320px) x1.5
+	갤럭시 S3 : 4.8", 720px (360px) x2.0
+	갤럭시 S4 : 5.0", 1080px (360px) x3.0
+	갤럭시 노트 : 5.3", 800px (400px) x2.0
+	갤럭시 노트 2 : 5.5", 720px (360px) x2.0
+	갤럭시 넥서스 : 4.6", 720px (360px) x2.0
+	넥서스 4 : 4.7", 768px (384px) x2.0
 
 참고 : http://screensiz.es/
 
@@ -243,10 +233,22 @@ http://twitter.github.io/bootstrap/scaffolding.html#responsive
 	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 	<![endif]-->
     
-위 스크립트를 추가하여 미디어쿼리를 해석할 수 있도록 도와준다. 
+위 스크립트를 추가하여 미디어쿼리를 해석할 수 있도록 도와준다.
+
+CSS 파일을 여러개로 분리하여 작업하는 경우는 다음과 같은 코드를 사용한다.
+
+	<link rel="stylesheet" href="phone-screen.css"  type="text/css" media="only screen and (max-device-width: 499px)" />
+    <link rel="stylesheet" href="tablet-screen.css"  type="text/css" media="only screen and (min-device-width: 500px)" />
 
 참고 : http://www.onextrapixel.com/2011/09/12/create-a-responsive-web-design-template/
 
+가로/세로 모드 관련
+
+모바일 웹에서 단말기를 회전시켰을 경우 브라우저가 함께 회전하여 레이아웃을 깨뜨리는 경우가 있다.
+
+자바스크립트를 통해 해당 이벤트를 차단하는 기능이 제공되나 기기별 차이가 존재한다고 한다. 즉, 되는 경우도 있고 안되는 경우도 있다는 것이다. 가능하면 가로/세로 모드에 해당하는 반응형 레이아웃을 구성하여 어떤 경우라도 적절히 대응할 수 있도록 처리하는 것이 좋다.
+
+참고 : http://htglss.tistory.com/122, http://stackoverflow.com/questions/5298467/prevent-orientation-change-in-ios-safari
 
 
 - 분리 설계
@@ -263,12 +265,16 @@ http://homepage.com/m/
 
 두 사이트 사이로 이동할 수 있는 방법을 제공하여 사용자가 즉시 해당 페이지로 이동할 수 있도록 준비한다.
 
+모바일 사이트는 모바일 전용 콘텐츠를 사용하고 데스크탑 사이트는 데스크탑 전용 콘텐츠를 사용하도록 하는 것이다. 물론 서버에서 적절히 데이터를 추출하여 사용하여 중복되는 데이터 처리를 방지하도록 해야한다.
+
+모바일 사이트에 사용할 데이터와 데스크탑에 사용할 데이터를 구분하는 것이 불필요한 경우라면 서버에서 제공되는 데이터를 어떻게 보여줄 것인지만 결정하면된다. 그리고 모바일 페이지에 적절한 이미지와 레이아웃을 구성하여 처리한다.
+
 
 - 가이드
 
-현업에 맞는 제안
+**현업에 맞는 제안**
 
-별도 데스크탑 사이트가 서비스 되고 있는 상황에서 추가로 모바일 사이트 대응이 필요한 관계로 별도의 도메인을 구성하여 모바일 전용 페이지를 서비스 하는 방법을 추천한다.
+별도 데스크탑 사이트가 서비스 되고 있는 상황에서 추가로 모바일 사이트 대응이 필요한 관계로 별도의 도메인을 구성 또는 별도의 라우팅을 통해 모바일 전용 페이지를 서비스 하는 방법을 추천한다.
 
 모바일 페이지 구성 가이드
 
@@ -276,15 +282,87 @@ http://homepage.com/m/
 2. 페이지 출력 전 서버에서 UA 에 따라 데스크탑 / 모바일 사이트로 이동
 3. 페이지 로딩 후 화면 사이즈에 따라 데스크탑으로 이동 할 수 있는 링크 제공
 
+**방문자 흐름 요약**
 
+사이트 주소 : site.com, site.com/m 으로 구성되어 있다고 가정한다.
 
+1. 사용자 접속 : 모바일에서 site.com 에 접속한다.
+2. 서버에서 UserAgent 를 확인하여 모바일 접속임을 확인한다.
+3. site.com/m 의 인덱스 페이지로 이동(redirect) 한다.
+4. 페이지 로딩을 마친 후 브라우저의 크기를 체크한다.
+5. 브라우저 가로 폭에 따라 모바일이 아닐 경우 이동 할 수 있도록 안내한다.
+
+브라우저 UserAgent 에 대하여
+
+브라우저마다 고유한 정보를 가지고 있으나 절대적이 아니다.
+
+참고 : http://ohgyun.com/292, http://www.javaservice.net/~java/bbs/read.cgi?m=devtip&b=servlet&c=r_p&n=1177641347, http://www.egovframe.org/wiki/doku.php?id=egovframework:mcom:%EB%AA%A8%EB%B0%94%EC%9D%BC%EA%B8%B0%EA%B8%B0%EC%8B%9D%EB%B3%84
+
+기타 유용한 팁
+
+뷰포트 
+
+	width : 넓이 - device-width | N px (200~10000 px, default 980 px)
+	height : 높이 - device-height | N px (223~10000 px)
+	initial-scale : 초기 확대/축소 배율
+	minimum-scale : 최소 축소 배율 - N (0~10, default 0.25)
+	maximum-scale : 최대 확대 배율 - N (0~10, default 1.6)
+	user-scalable : 확대/축소 가능 여부 - yes | no (default yes)
+
+자동 전화 연결 제한
+
+	<meta name="format-detection" content="telephone=no" />
+    
+바로가기 아이콘 
+
+	<link rel="apple-touch-icon" href="../images/icon.png" />
+	<link rel="apple-touch-icon-precomposed" href="../images/icon.png" />
+
+apple-touch-icon.png / apple-touch-icon-precomposed.png 의 파일명으로 도메인의 최상위 경로에 올려두면 위의 link 태그를 적용하지 않아도 홈 화면에 추가시 아이콘이 적용됩니다.
+
+기기별 홈 아이콘 이미지 사이즈
+
+	아이폰3G, 아이폰3GS [ 사이즈: 57*57 ]
+	아이패드 [ 사이즈: 72*72 ]
+	아이폰 4 [ 사이즈: 114*114 ]
+
+안드로이드 기기는 웹 사이트의 기존 파비콘을 그대로 사용하는 경우가 많다.
+
+	<link href="/favicon.ico" rel="shortcut icon">
+
+참고 : http://harpy2.blogspot.kr/2012/12/blog-post_6.html
 
 
 
 ----------
 
 
-### 업무 정의 
+### 업무 정의
+
+1. PM
+
+모바일 웹 프로젝트라고 별거 있나? 매니저는 다른 웹 프로젝트와 동일하게 자신의 일을 하면 된다.
+
+2. 기획자
+
+보통 사이트 구축시 기획자가 화면 설계까지 한다면 기획자는 그 전보다 머리가 더 복잡해질 것이다. 반응형 웹을 구상해야 하기 때문이다.
+
+가변 폭에 대한 대응, 디바이스 별 대응을 위해 대 많은 상상이 필요하다. 하지만 동일한 콘텐츠를 어떻게 구축하고 배열할지 결정하는 것이기에 크게 고민할 것은 없다. 단지 더 많은 시간과 많은 작업이 필요할 뿐이다.
+
+3. 디자이너
+
+기획자가 구현한 가이드를 통일성 있게 디자인 하면 된다. 기획자와 긴밀한 의사소통을 통해 구현 의도를 충분히 파악하고 이해하여 멋진 모바일 페이지를 디자인하자.
+
+4. 퍼블리셔
+
+개인적으로 현대 웹 프로젝트의 퀄리티는 퍼블리셔의 손에 달렸다고 본다. 구조적으로 구성된 시맨틱 HTML, 최적화된 CSS, 최신 CSS 3 스킬들이 필요하다. 
+
+5. 개발자 / 프론트엔드 개발자
+
+프로그래머의 영역은 이제 서버 뿐 아니라 웹 브라우저도 신경써야 한다. 이에 따라 프론트엔드 개발자라 불리는 직군이 생겨나고 있다. 세상은 웹브라우저로 연결되어 있고 그 기반은 웹 브라우저가 되었다. 그 동안 하드웨어에 따라 다양한 언어로 소프트웨어를 개발했지만 이제 브라우저 위에서 돌아가는 소프트웨어를 위해 자바스크립트를 사용해야 한다. 자바스크립트는 새로운 시대의 어셈블리 언어가 되었다.
+
+
+** 공동적인 사항 **
 
 - 클라이언트 한계
 
@@ -307,6 +385,7 @@ http://homepage.com/m/
 
 
 ### 모바일 관련 오픈소스 소개
+
 
 - BoilerPlate 
 
