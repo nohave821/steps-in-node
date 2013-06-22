@@ -204,6 +204,8 @@ http://www.slideshare.net/YoungAhKim/ss-11348360
 
 에이전트 구분, 미디어쿼리 사용, 클라이언트 스크립트 구현
 
+미디어쿼리를 사용하여 배경 이미지를 구성할 경우 조건에 해당되지 않는 이미지들은 로딩되지 않는다. 
+
 간편하게 반응형 웹디자인을 하기 위해 부트스트랩과 같은 CSS 프레임워크를 사용한다.
 
 http://twitter.github.io/bootstrap/scaffolding.html#responsive
@@ -219,8 +221,31 @@ http://twitter.github.io/bootstrap/scaffolding.html#responsive
 반응형 웹 디자인 샘플 코드
 
 	샘플 코드 : HTML, CSS 샘플
-    codepen.io 에 테스트 코드 업로드
 
+	@media (max-width:499px) { ... CSS for Phone ... }  /* 이 코드는 499px 이하의 해상도에서 해석 됩니다 */
+    @media (min-width:500px) { ... CSS for Tablet ... } /* 이 코드는 500px 이상의 해상도에서 해석 됩니다 */
+    
+위 케이스의 경우 미디어쿼리를 해석하지 못하는 브라우저를 만났을 경우 문제가 발생한다. 따라서 기본으로 해석할 CSS 를 정해야 한다.
+
+폰에 해당되는 CSS 를 기준으로 작성할 경우의 샘플 코드
+ 
+	{ ... CSS for All (Phone) ... }  /* 이 코드는 모른 해상도에서 해석 됩니다 */
+    @media (min-width:500px) { ... CSS for Tablet ... } /* 이 코드는 500px 이상의 해상도에서 해석 됩니다 */
+
+태블릿을 기준으로 작성할 경우의 샘플 코드
+
+	{ ... CSS for All (Tablet) ... } /* 이 코드는 모든 해상도에서 해석 됩니다 */
+    @media (max-width:499px) { ... CSS for Phone ... }  /* 이 코드는 499px 이하의 해상도에서 해석 됩니다 */
+    
+데스크탑에서도 모바일 사이트를 접근하는 경우가 발생한다. 광고나 트래픽의 문제로 일부러 m.site.com 을 접근해 본 적이 있을 것이다. 이런 경우 IE 9 미만의 경우 미디어쿼리를 해석하지 못한다. IE Hack 스크립트를 활용하도록 한다.
+
+	<!--[if lt IE 9]>
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<![endif]-->
+    
+위 스크립트를 추가하여 미디어쿼리를 해석할 수 있도록 도와준다. 
+
+참고 : http://www.onextrapixel.com/2011/09/12/create-a-responsive-web-design-template/
 
 
 
