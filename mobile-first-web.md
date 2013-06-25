@@ -1,6 +1,45 @@
 # 모바일 웹 사이트 구축을 위해 고려해야 할 사항
 
 
+## 네이티브 앱/ 하이브리드 앱/ 모바일 웹
+
+
+- 구분
+
+앱 : 네이티브 코드로 컴파일 되어 단말기에서 실행되는 것
+
+웹 : 단말기의 브라우저 만으로 접속하는 것
+
+하이브리드 앱 : 네이티브 코드로 컴파일 되어 실행되나 단말기의 브라우저 `모듈` 을 통해 접속하는 것
+
+
+현 시점 웹과 앱의 경계를 명확히 나누는 것이 애매해진 상황이다. 이유는 기술 혼용이 심화되었기 때문이다.
+
+구조 : 디바이스 API 래퍼를 활용하는 웹을 하이브리드 앱/웹 이라 할 수 있는데
+
+네이티브 앱도 웹 뷰를 사용하고 웹 페이지도 디바이스 API 를 자유롭게 사용할 수 있는 수준이 되었기 때문이다.
+
+
+- 장/단점
+
+현 시점 모바일 대응하여 준비하고 시행하는 작업들을 볼 때 장단점이 명확하게 드러나서 무언가를 결정하는 시대는 아니다.
+
+제공하는 콘텐츠와 사용자 요구 수준에 따라 구분되고 있는 것이 많다.
+
+순전히 결정권자의 결정에 대한 문제 : 요구사항의 문제이지 기술 해결의 문제 때문에 해당 방법을 선택하는 것은 아니다.
+
+기술 책임자 선에서 결정하여 처리하자.
+
+
+
+**CE 기술에 필요한 것은 무엇인가요?**
+
+
+
+----------
+
+
+
 ## 일반 웹사이트와 뭐가 다른가
 
 - 가변폭 최우선
@@ -23,7 +62,7 @@
 
 참고 : http://screensiz.es/
 
-대표적인 모델의 해상도를 보더라도 다양한 사이즈와 해상도가 존재한다. 이에 대한 적절한 대응 방법이 있어야한다.
+대표적인 모델의 해상도를 보더라도 다양한 사이즈와 해상도가 존재한다. 이에 대한 적절한 대응 방법이 있어야 한다.
 
 
 
@@ -62,7 +101,7 @@
 
 코드샘플 : 뷰포트의 폭을 디바이스 Width 로 지정한다는 의미
  
-    <meta name="viewport" content="width=device-width" />
+    < meta name="viewport" content="width=device-width" />
 
 
 최초 폭 지정, 폭, 높이 지정, 최대 확대 제한, 최소 축소 제한, 사용자 확대/축소 제한이 가능하다.
@@ -72,15 +111,15 @@
 
 -네이버 
 
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    < meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 
 -다음
 
-    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    < meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
 
 -네이트
 
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    < meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 
 참고로 최근 다음쪽의 모바일 대응이 가장 나아보인다. 세 업체 중 네이버가 가장 못난 모바일 화면 구성을 보여준다.
 
@@ -184,45 +223,6 @@
 ----------
 
 
-## 네이티브 앱/ 하이브리드 앱/ 모바일 웹
-
-
-- 구분
-
-네이티브 코드로 컴파일 되어 단말기에서 실행되는 것을 앱
-
-단말기의 브라우저 만으로 접속하는 것을 웹
-
-네이티브 코드로 컴파일 되어 실행되다 단말기의 브라우저 `모듈` 을 통해 접속하는 것을 하이브리드 앱 이라고 구분한다.
-
-
-현 시점 웹과 앱의 경계를 명확히 나누는 것이 애매해진 상황이다. 이유는 기술 혼용이 심화되었기 때문이다.
-
-구조 : 디바이스 API 래퍼를 활용하는 웹을 하이브리드 앱/웹 이라 할 수 있는데
-
-네이티브 앱도 웹 뷰를 사용하고 웹 페이지도 디바이스 API 를 자유롭게 사용할 수 있는 수준이 되었기 때문이다.
-
-
-- 장/단점
-
-현 시점 모바일 대응하여 준비하고 시행하는 작업들을 볼 때 장단점이 명확하게 드러나서 무언가를 결정하는 시대는 아니다.
-
-제공하는 콘텐츠와 사용자 요구 수준에 따라 구분되고 있는 것이 많다.
-
-순전히 결정권자의 결정에 대한 문제 : 요구사항의 문제이지 기술 해결의 문제 때문에 해당 방법을 선택하는 것은 아니다.
-
-기술 책임자 선에서 결정하여 처리하자.
-
-
-
-**CE 기술에 필요한 것은 무엇인가요?**
-
-
-
-
-
-----------
-
 
 ### 구현 방법
 
@@ -269,16 +269,16 @@ http://twitter.github.io/bootstrap/scaffolding.html#responsive
     
 데스크탑에서도 모바일 사이트를 접근하는 경우가 발생한다. 광고나 트래픽의 문제로 일부러 m.site.com 을 접근해 본 적이 있을 것이다. 이런 경우 IE 9 미만의 경우 미디어쿼리를 해석하지 못한다. IE Hack 스크립트를 활용하도록 한다.
 
-	<!--[if lt IE 9]>
-	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-	<![endif]-->
+	< !--[if lt IE 9]>
+	< script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	< ![endif]-->
     
 위 스크립트를 추가하여 미디어쿼리를 해석할 수 있도록 도와준다.
 
 CSS 파일을 여러개로 분리하여 작업하는 경우는 다음과 같은 코드를 사용한다.
 
-	<link rel="stylesheet" href="phone-screen.css"  type="text/css" media="only screen and (max-device-width: 499px)" />
-    <link rel="stylesheet" href="tablet-screen.css"  type="text/css" media="only screen and (min-device-width: 500px)" />
+	< link rel="stylesheet" href="phone-screen.css"  type="text/css" media="only screen and (max-device-width: 499px)" />
+    < link rel="stylesheet" href="tablet-screen.css"  type="text/css" media="only screen and (min-device-width: 500px)" />
 
 참고 : http://www.onextrapixel.com/2011/09/12/create-a-responsive-web-design-template/
 
@@ -377,6 +377,7 @@ apple-touch-icon.png / apple-touch-icon-precomposed.png 의 파일명으로 도�
 ----------
 
 
+
 ### 업무 정의
 
 1. PM
@@ -424,6 +425,10 @@ apple-touch-icon.png / apple-touch-icon-precomposed.png 의 파일명으로 도�
 
 
 
+----------
+
+
+
 ### 모바일 관련 오픈소스 소개
 
 
@@ -463,9 +468,3 @@ http://leafletjs.com/
 
 https://github.com/borismus/srcset-polyfill/ 
 
-
-
-아래 건 모바일 뿐 아니라 서버 프로그래밍
-
-- URL 단축
-- SNS 연동
