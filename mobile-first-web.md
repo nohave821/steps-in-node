@@ -1,5 +1,8 @@
 # 모바일 웹 사이트 구축을 위해 고려해야 할 사항
 
+http://slid.es/soomtong/mobile-web
+http://slide1.office.naver.com/slide/showSlide.cmd?docId=ODI2YWIzYTQtN2YwMC00NDQ5LTljYWItODNhZTk4Y2I4YzNm&mode=SHOW
+
 
 ## 네이티브 앱/ 하이브리드 앱/ 모바일 웹
 
